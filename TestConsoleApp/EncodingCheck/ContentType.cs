@@ -87,10 +87,10 @@ namespace TestConsoleApp.EncodingCheck
         }
 
         /// <summary>
-        /// Returns a <see cref="T:System.String"/> that represents the current <see cref="T:Assureweb.ReAP.RuntimeLibrary.ContentType"/>.
+        /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="T:System.String"/> that represents the current <see cref="T:Assureweb.ReAP.RuntimeLibrary.ContentType"/>.
+        /// A <see cref="System.String" /> that represents this instance.
         /// </returns>
         public override string ToString()
         {

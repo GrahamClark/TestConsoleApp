@@ -187,7 +187,6 @@
     <Compile Include="DataContractSerialization\Runner.cs" />
     <Compile Include="Dates\Runner.cs" />
     <Compile Include="Deadlocking\Runner.cs" />
-    <Compile Include="Emailing\Runner.cs" />
     <Compile Include="Enumerations\Runner.cs" />
     <Compile Include="EnumFlags\Option.cs" />
     <Compile Include="EnumFlags\Runner.cs" />
@@ -261,7 +260,7 @@
     <Compile Include="PythonScripting\SalesBasket.cs" />
     <Compile Include="QueryProvider\QueryProvider.cs" />
     <Compile Include="QueryProvider\QueryTranslator.cs" />
-    <Compile Include="QueryProvider\Query[T].cs" />
+    <Compile Include="QueryProvider\QueryOfT.cs" />
     <Compile Include="QueryProvider\TypeSystem.cs" />
     <Compile Include="EncodingCheck\ContentType.cs" />
     <Compile Include="EncodingCheck\EncodingDetector.cs" />
