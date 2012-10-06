@@ -1,0 +1,39 @@
+﻿using System;
+using System.Runtime.Serialization;
+
+namespace TestConsoleApp.DataContractSerialization
+{
+    [DataContract]
+    public class Person
+    {
+        private DateTime personDateOfBirth;
+        private string personName;
+        private int personAge;
+
+        [DataMember]
+        public DateTime DateOfBirth
+        {
+            get { return this.personDateOfBirth; }
+            set { this.personDateOfBirth = value; }
+        }
+
+        [DataMember]
+        public string Name
+        {
+            get { return this.personName; }
+            set { this.personName = value; }
+        }
+
+        [DataMember]
+        public int Age
+        {
+            get { return this.personAge; }
+            set { this.personAge = value; }
+        }
+
+        public override string ToString()
+        {
+            return String.Format("Date of Birth: {0}, Name: {1}, Age: {2}", this.DateOfBirth, this.Name, this.Age);
+        }
+    }
+}

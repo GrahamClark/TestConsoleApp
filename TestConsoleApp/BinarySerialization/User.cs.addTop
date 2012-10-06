@@ -1,0 +1,35 @@
+﻿using System;
+
+namespace TestConsoleApp.BinarySerialization
+{
+    [Serializable]
+    public class User
+    {
+        private bool active;
+        private string name;
+        private DateTime lastLoggedIn;
+
+        public bool Active
+        {
+            get { return this.active; }
+            set { this.active = value; }
+        }
+
+        public string Name
+        {
+            get { return this.name; }
+            set { this.name = value; }
+        }
+
+        public DateTime LastLoggedIn
+        {
+            get { return this.lastLoggedIn; }
+            set { this.lastLoggedIn = value; }
+        }
+
+        public override string ToString()
+        {
+            return String.Format("Active: {0}\nName: {1}\nLast Logged In: {2}", this.active, this.name, this.lastLoggedIn);
+        }
+    }
+}
