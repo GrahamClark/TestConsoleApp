@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoPoco;
+﻿using AutoPoco;
 using AutoPoco.DataSources;
-using AutoPoco.Engine;
+using System;
 
 namespace TestConsoleApp.AutoPoco
 {
-    class Runner : IRunner
+    internal class Runner : IRunner
     {
         public void RunProgram()
         {
-            IGenerationSessionFactory factory = AutoPocoContainer.Configure(x =>
+            var factory = AutoPocoContainer.Configure(
+                x =>
                 {
                     x.Conventions(c => c.UseDefaultConventions());
                     x.AddFromAssemblyContainingType<Person>();
@@ -20,9 +19,9 @@ namespace TestConsoleApp.AutoPoco
                      .Setup(c => c.Age).Use<RandomIntegerSource>(21, 70);
                 });
 
-            IGenerationSession session = factory.CreateSession();
+            var session = factory.CreateSession();
 
-            IList<Person> people = session.List<Person>(10).Get();
+            var people = session.List<Person>(10).Get();
 
             foreach (var person in people)
             {

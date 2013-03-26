@@ -94,6 +94,9 @@
       <HintPath>..\packages\IronPython.2.7.3\lib\Net40\Microsoft.Scripting.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TextTemplating.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="protobuf-net">
       <HintPath>..\packages\protobuf-net.2.0.0.480\lib\net40\protobuf-net.dll</HintPath>
     </Reference>
@@ -114,6 +117,7 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -134,156 +138,444 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgeAttained\Runner.cs" />
-    <Compile Include="AppDomains\Runner.cs" />
-    <Compile Include="Arrays\Runner.cs" />
+    <Compile Include="AgeAttained\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="AppDomains\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Arrays\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="BinarySerialization\User.cs.addBottom" />
     <None Include="BinarySerialization\User.cs.addTop" />
     <None Include="BinarySerialization\User.cs.original" />
-    <Compile Include="AutoPoco\RandomAlphaStringSource.cs" />
-    <Compile Include="AutoPoco\RandomIntegerSource.cs" />
-    <Compile Include="BinarySerialization\PersonSerializationBinder.cs" />
-    <Compile Include="BinarySerialization\PersonV1.cs" />
-    <Compile Include="BinarySerialization\PersonV2.cs" />
-    <Compile Include="BinarySerialization\Runner.cs" />
-    <Compile Include="BinarySerialization\User.cs" />
-    <Compile Include="BinaryToBase64\Runner.cs" />
-    <Compile Include="Booleans\Runner.cs" />
-    <Compile Include="BrainTeasers\Arithmetic\Runner.cs" />
-    <Compile Include="BrainTeasers\Compiler\Runner.cs" />
-    <Compile Include="BrainTeasers\Delegates\Runner.cs" />
-    <Compile Include="BrainTeasers\Ordering\Runner.cs" />
-    <Compile Include="BrainTeasers\Overloading\Runner.cs" />
-    <Compile Include="BrainTeasers\TypeInference\Runner.cs" />
-    <Compile Include="Comparing\AnnualAnnuityComparer.cs" />
-    <Compile Include="Comparing\AssumedBonusRateComparer.cs" />
-    <Compile Include="Comparing\QuoteResult.cs" />
-    <Compile Include="Comparing\Runner.cs" />
-    <Compile Include="Comparing\SortDirection.cs" />
-    <Compile Include="ConditionalCompilation\Runner.cs" />
-    <Compile Include="CovarianceContravariance\Entities\Animal.cs" />
-    <Compile Include="CovarianceContravariance\Entities\Giraffe.cs" />
-    <Compile Include="CovarianceContravariance\Entities\Mammal.cs" />
-    <Compile Include="CovarianceContravariance\Entities\Reptile.cs" />
-    <Compile Include="CovarianceContravariance\Entities\Tiger.cs" />
-    <Compile Include="CovarianceContravariance\Entities\Turtle.cs" />
-    <Compile Include="CovarianceContravariance\Runner.cs" />
+    <Compile Include="Async\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="AutoPoco\RandomAlphaStringSource.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="AutoPoco\RandomIntegerSource.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BinarySerialization\PersonSerializationBinder.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BinarySerialization\PersonV1.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BinarySerialization\PersonV2.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BinarySerialization\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BinarySerialization\User.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BinaryToBase64\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Booleans\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BrainTeasers\Arithmetic\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BrainTeasers\Compiler\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BrainTeasers\Delegates\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BrainTeasers\Ordering\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BrainTeasers\Overloading\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BrainTeasers\TypeInference\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BrainTeasers\Comparing\AnnualAnnuityComparer.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BrainTeasers\Comparing\AssumedBonusRateComparer.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BrainTeasers\Comparing\QuoteResult.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BrainTeasers\Comparing\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BrainTeasers\Comparing\SortDirection.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ConditionalCompilation\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CovarianceContravariance\Entities\Animal.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CovarianceContravariance\Entities\Giraffe.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CovarianceContravariance\Entities\Mammal.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CovarianceContravariance\Entities\Reptile.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CovarianceContravariance\Entities\Tiger.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CovarianceContravariance\Entities\Turtle.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CovarianceContravariance\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
     <None Include="DataContractSerialization\Person.cs.addBottom" />
     <None Include="DataContractSerialization\Person.cs.addTop" />
     <None Include="DataContractSerialization\Person.cs.original" />
-    <Compile Include="CustomConfiguration\ProfileElement.cs" />
-    <Compile Include="CustomConfiguration\ProfileElementCollection.cs" />
-    <Compile Include="CustomConfiguration\Runner.cs" />
-    <Compile Include="CustomConfiguration\TestElement.cs" />
-    <Compile Include="CustomConfiguration\TestElementCollection.cs" />
-    <Compile Include="CustomConfiguration\TestingConfigurationSection.cs" />
-    <Compile Include="DataContractSerialization\Person.cs" />
-    <Compile Include="DataContractSerialization\Runner.cs" />
-    <Compile Include="Dates\Runner.cs" />
-    <Compile Include="Deadlocking\Runner.cs" />
-    <Compile Include="Enumerations\Runner.cs" />
-    <Compile Include="EnumFlags\Option.cs" />
-    <Compile Include="EnumFlags\Runner.cs" />
-    <Compile Include="EnumFlags\User.cs" />
-    <Compile Include="EventHandling\Client.cs" />
-    <Compile Include="EventHandling\Runner.cs" />
-    <Compile Include="EventHandling\Server.cs" />
-    <Compile Include="ExplicitInterface\Runner.cs" />
-    <Compile Include="ExpressionTrees\ExpressionParser.cs" />
-    <Compile Include="ExpressionTrees\Runner.cs" />
-    <Compile Include="ExpressionCombining\Runner.cs" />
-    <Compile Include="ExtensionMethods\Item.cs" />
-    <Compile Include="ExtensionMethods\OtherItem.cs" />
-    <Compile Include="ExtensionMethods\Runner.cs" />
-    <Compile Include="ExtensionMethods\SubItem.cs" />
-    <Compile Include="ExtensionMethods\Translator.cs" />
-    <Compile Include="GarbageCollection\Runner.cs" />
-    <Compile Include="GenericsHashing\Hasher.cs" />
-    <Compile Include="GenericsHashing\Runner.cs" />
-    <Compile Include="Grammars\Grammar.cs" />
-    <Compile Include="Grammars\Runner.cs" />
-    <Compile Include="GraphColouring\BitSet.cs" />
-    <Compile Include="GraphColouring\Extensions.cs" />
-    <Compile Include="GraphColouring\Graph.cs" />
-    <Compile Include="GraphColouring\Runner.cs" />
-    <Compile Include="GraphColouring\Solver.cs" />
-    <Compile Include="MethodResolution\Runner.cs" />
-    <Compile Include="Currying\Runner.cs" />
-    <Compile Include="PasswordHashing\HashProcessor.cs" />
-    <Compile Include="PasswordHashing\Runner.cs" />
-    <Compile Include="Inheritance\Runner.cs" />
-    <Compile Include="IntervalSort\Runner.cs" />
-    <Compile Include="IRunner.cs" />
-    <Compile Include="Lambdas\Runner.cs" />
-    <Compile Include="Lazy\Order.cs" />
-    <Compile Include="Lazy\OrderFetcher.cs" />
-    <Compile Include="Lazy\Runner.cs" />
-    <Compile Include="LinqAggregates\Runner.cs" />
-    <Compile Include="LinqGrouping\Comparison.cs" />
-    <Compile Include="LinqGrouping\Quote.cs" />
-    <Compile Include="LinqGrouping\Runner.cs" />
-    <Compile Include="LinqOrdering\Runner.cs" />
-    <Compile Include="LinqToXml\Person.cs" />
-    <Compile Include="LinqToXml\Runner.cs" />
-    <Compile Include="Linq\Runner.cs" />
-    <Compile Include="LoopVariables\Runner.cs" />
-    <Compile Include="MemoryMappedFiles\Runner.cs" />
-    <Compile Include="NullableTypes\Runner.cs" />
-    <Compile Include="Pointers\ArrayPtr.cs" />
-    <Compile Include="Pointers\Runner.cs" />
-    <Compile Include="Predicates\Runner.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomConfiguration\ProfileElement.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CustomConfiguration\ProfileElementCollection.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CustomConfiguration\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CustomConfiguration\TestElement.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CustomConfiguration\TestElementCollection.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CustomConfiguration\TestingConfigurationSection.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="CustomExceptions\Runner.cs" />
+    <Compile Include="DataContractSerialization\Person.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="DataContractSerialization\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Dates\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Deadlocking\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Enumerations\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="EnumFlags\Option.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="EnumFlags\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="EnumFlags\User.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="EventHandling\Client.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="EventHandling\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="EventHandling\Server.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ExplicitInterface\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ExpressionTrees\ExpressionParser.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ExpressionTrees\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ExpressionCombining\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ExtensionMethods\Item.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ExtensionMethods\OtherItem.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ExtensionMethods\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ExtensionMethods\SubItem.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ExtensionMethods\Translator.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="GarbageCollection\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="GenericsHashing\Hasher.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="GenericsHashing\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Grammars\Grammar.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Grammars\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="GraphColouring\BitSet.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="GraphColouring\Extensions.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="GraphColouring\Graph.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="GraphColouring\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="GraphColouring\Solver.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="HashCodes\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="HMACSHA256Test\Runner.cs" />
+    <Compile Include="InitializationOrder\Runner.cs" />
+    <Compile Include="LinqGrouping\CardModel.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="LinqGrouping\LoyaltyCardBranch.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="LinqGrouping\LoyaltyCardBranchOffer.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="MethodResolution\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Currying\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="MoqTests\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="NestedGenerics\Runner.cs" />
+    <Compile Include="PasswordHashing\HashProcessor.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="PasswordHashing\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Inheritance\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="IntervalSort\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="IRunner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Lambdas\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Lazy\Order.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Lazy\OrderFetcher.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Lazy\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="LinqAggregates\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="LinqGrouping\Comparison.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="LinqGrouping\Quote.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="LinqGrouping\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="LinqOrdering\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="LinqToXml\Person.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="LinqToXml\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Linq\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="LoopVariables\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="MemoryMappedFiles\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="NullableTypes\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Pointers\ArrayPtr.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Pointers\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Predicates\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Program.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="ProtocolBuffers\Address.cs" />
-    <Compile Include="ProtocolBuffers\Being.cs" />
-    <Compile Include="ProtocolBuffers\Gender.cs" />
-    <Compile Include="ProtocolBuffers\Person.cs" />
-    <Compile Include="ProtocolBuffers\Runner.cs" />
-    <Compile Include="PythonScripting\Line.cs" />
-    <Compile Include="PythonScripting\Runner.cs" />
-    <Compile Include="PythonScripting\SalesBasket.cs" />
-    <Compile Include="QueryProvider\QueryProvider.cs" />
-    <Compile Include="QueryProvider\QueryTranslator.cs" />
-    <Compile Include="QueryProvider\QueryOfT.cs" />
-    <Compile Include="QueryProvider\TypeSystem.cs" />
-    <Compile Include="EncodingCheck\ContentType.cs" />
-    <Compile Include="EncodingCheck\EncodingDetector.cs" />
-    <Compile Include="EncodingCheck\Runner.cs" />
-    <Compile Include="EncodingCheck\StringMatcher.cs" />
-    <Compile Include="ReferenceParameters\Runner.cs" />
-    <Compile Include="RelativeMonthYear\MonthYear.cs" />
-    <Compile Include="RelativeMonthYear\MonthYearUnit.cs" />
-    <Compile Include="RelativeMonthYear\RangeBoundaryType.cs" />
-    <Compile Include="RelativeMonthYear\Runner.cs" />
-    <Compile Include="Rounding\Runner.cs" />
-    <Compile Include="AutoPoco\Person.cs" />
-    <Compile Include="AutoPoco\Runner.cs" />
-    <Compile Include="SortingCountries\Runner.cs" />
-    <Compile Include="StaticInitialisation\Runner.cs" />
-    <Compile Include="StringFormat\Runner.cs" />
-    <Compile Include="StructLayout\Runner.cs" />
-    <Compile Include="Structs\Runner.cs" />
-    <Compile Include="Threading\Runner.cs" />
-    <Compile Include="TreeDisplay\Dumper.cs" />
-    <Compile Include="TreeDisplay\Node.cs" />
-    <Compile Include="TreeDisplay\Runner.cs" />
-    <Compile Include="VirtualMethods\AnotherChild.cs" />
-    <Compile Include="VirtualMethods\Base.cs" />
-    <Compile Include="VirtualMethods\Child.cs" />
-    <Compile Include="VirtualMethods\Runner.cs" />
+    <Compile Include="ProtocolBuffers\Address.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ProtocolBuffers\Being.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ProtocolBuffers\Gender.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ProtocolBuffers\Person.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="ProtocolBuffers\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="PythonScripting\Line.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="PythonScripting\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="PythonScripting\SalesBasket.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="QueryProvider\QueryProvider.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="QueryProvider\QueryTranslator.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="QueryProvider\QueryOfT.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="QueryProvider\TypeSystem.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="EncodingCheck\ContentType.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="EncodingCheck\EncodingDetector.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="EncodingCheck\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="EncodingCheck\StringMatcher.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="RandomStrings\Runner.cs" />
+    <Compile Include="ReferenceParameters\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="RelativeMonthYear\MonthYear.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="RelativeMonthYear\MonthYearUnit.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="RelativeMonthYear\RangeBoundaryType.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="RelativeMonthYear\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Rounding\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="AutoPoco\Person.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="AutoPoco\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="SortingCountries\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="StaticInitialisation\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="StringFormat\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="StructLayout\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Structs\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Tasks\Runner.cs" />
+    <Compile Include="Threading\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="TreeDisplay\Dumper.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="TreeDisplay\Node.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="TreeDisplay\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="VirtualMethods\AnotherChild.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="VirtualMethods\Base.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="VirtualMethods\Child.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="VirtualMethods\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -295,23 +587,48 @@
     <None Include="XmlSerialization\Person.cs.addBottom" />
     <None Include="XmlSerialization\Person.cs.addTop" />
     <None Include="XmlSerialization\Person.cs.original" />
-    <Compile Include="Workflow\Person.cs" />
-    <Compile Include="Workflow\Runner.cs" />
-    <Compile Include="XmlSerialization\Person.cs" />
-    <Compile Include="XmlSerialization\Runner.cs" />
-    <Compile Include="XmlStuff\Runner.cs" />
-    <Compile Include="XsltExtensionObjects\ComparisonRequest.cs" />
-    <Compile Include="XsltExtensionObjects\ExtensionObject.cs" />
+    <Compile Include="Workflow\Person.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Workflow\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="XmlSerialization\Person.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="XmlSerialization\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="XmlStuff\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="XsltExtensionObjects\ComparisonRequest.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="XsltExtensionObjects\ExtensionObject.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="XsltExtensionObjects\ExtensionObjectResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ExtensionObjectResources.resx</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="XsltExtensionObjects\ObjectXPathNavigator.cs" />
-    <Compile Include="XsltExtensionObjects\ObjectXPathProxy.cs" />
-    <Compile Include="XsltExtensionObjects\Runner.cs" />
-    <Compile Include="Xsl\Runner.cs" />
-    <Compile Include="YieldReturns\Runner.cs" />
+    <Compile Include="XsltExtensionObjects\ObjectXPathNavigator.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="XsltExtensionObjects\ObjectXPathProxy.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="XsltExtensionObjects\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Xsl\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="YieldReturns\Runner.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Settings.settings">
