@@ -102,6 +102,9 @@
     </Reference>
     <Reference Include="Roslyn.Compilers, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Roslyn.Compilers.CSharp, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.3.9.48\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Activities" />
     <Reference Include="System.Configuration" />
@@ -322,6 +325,12 @@
     <Compile Include="ExtensionMethods\Translator.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="FileResources\FileResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FileResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FileResources\Runner.cs" />
     <Compile Include="GarbageCollection\Runner.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
@@ -331,6 +340,7 @@
     <Compile Include="GenericsHashing\Runner.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="GenericTypeConstraints\Runner.cs" />
     <Compile Include="Grammars\Grammar.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
@@ -357,6 +367,9 @@
     </Compile>
     <Compile Include="HMACSHA256Test\Runner.cs" />
     <Compile Include="InitializationOrder\Runner.cs" />
+    <Compile Include="JsonSerialization\Census.cs" />
+    <Compile Include="JsonSerialization\Person.cs" />
+    <Compile Include="JsonSerialization\Runner.cs" />
     <Compile Include="LinqGrouping\CardModel.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
@@ -436,6 +449,7 @@
     <Compile Include="NullableTypes\Runner.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Permuatations\Runner.cs" />
     <Compile Include="Pointers\ArrayPtr.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
@@ -536,6 +550,7 @@
     <Compile Include="AutoPoco\Runner.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="RsaEncryption\Runner.cs" />
     <Compile Include="SortingCountries\Runner.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
@@ -641,6 +656,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FileResources\FileResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FileResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -654,6 +673,7 @@
     <Content Include="BrainTeasers\link.txt" />
     <Content Include="MemoryMappedFiles\input.txt" />
     <Content Include="PythonScripting\python.py" />
+    <None Include="Resources\test.txt" />
     <Content Include="T4Templates\Script1.SQL">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -1,4 +1,5 @@
 using System;
+using System.Web;
 
 namespace TestConsoleApp
 {
@@ -8,7 +9,7 @@ namespace TestConsoleApp
         {
             try
             {
-                IRunner runner = new CustomExceptions.Runner();
+                IRunner runner = new FileResources.Runner();
                 runner.RunProgram();
             }
             catch (Exception ex)
