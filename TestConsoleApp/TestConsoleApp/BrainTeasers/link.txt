@@ -1,1 +1,0 @@
-﻿from http://www.yoda.arachsys.com/csharp/teasers.html

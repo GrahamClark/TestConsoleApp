@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace TestConsoleApp.TreeDisplay
@@ -34,7 +31,7 @@ namespace TestConsoleApp.TreeDisplay
                     )
                 );
 
-            string output = Dumper.Dump(root);
+            string output = DepthFirstDumper.Dump(root);
             File.WriteAllText(@"C:\tmp\treedump.txt", output);
             Console.WriteLine(output);
         }

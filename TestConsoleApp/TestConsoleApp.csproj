@@ -64,6 +64,9 @@
     <Reference Include="AutoPoco">
       <HintPath>..\packages\AutoPoco.1.0.0.0\lib\AutoPoco.dll</HintPath>
     </Reference>
+    <Reference Include="Enyim.Caching">
+      <HintPath>..\packages\EnyimMemcached.2.12\lib\net35\Enyim.Caching.dll</HintPath>
+    </Reference>
     <Reference Include="IronPython">
       <HintPath>..\packages\IronPython.2.7.3\lib\Net40\IronPython.dll</HintPath>
     </Reference>
@@ -156,6 +159,7 @@
     <None Include="BinarySerialization\User.cs.addBottom" />
     <None Include="BinarySerialization\User.cs.addTop" />
     <None Include="BinarySerialization\User.cs.original" />
+    <Compile Include="Async\MultipleTasksRunner.cs" />
     <Compile Include="Async\Runner.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
@@ -325,12 +329,15 @@
     <Compile Include="ExtensionMethods\Translator.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="FieldReplacement\Runner.cs" />
     <Compile Include="FileResources\FileResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FileResources.resx</DependentUpon>
     </Compile>
     <Compile Include="FileResources\Runner.cs" />
+    <Compile Include="FiniteStateMachine\Runner.cs" />
+    <Compile Include="FunctionalFibonacci\Runner.cs" />
     <Compile Include="GarbageCollection\Runner.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
@@ -365,6 +372,8 @@
     <Compile Include="HashCodes\Runner.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="HashSet\Person.cs" />
+    <Compile Include="HashSet\Runner.cs" />
     <Compile Include="HMACSHA256Test\Runner.cs" />
     <Compile Include="InitializationOrder\Runner.cs" />
     <Compile Include="JsonSerialization\Census.cs" />
@@ -379,6 +388,10 @@
     <Compile Include="LinqGrouping\LoyaltyCardBranchOffer.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="MathFromScratch\Integer.cs" />
+    <Compile Include="MathFromScratch\Natural.cs" />
+    <Compile Include="MathFromScratch\Runner.cs" />
+    <Compile Include="Memcached\Runner.cs" />
     <Compile Include="MethodResolution\Runner.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
@@ -570,9 +583,8 @@
     <Compile Include="Threading\Runner.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="TreeDisplay\Dumper.cs">
-      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
-    </Compile>
+    <Compile Include="TreeDisplay\DepthFirstDumper.cs" />
+    <Compile Include="TreeDisplay\Dumper.cs" />
     <Compile Include="TreeDisplay\Node.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>

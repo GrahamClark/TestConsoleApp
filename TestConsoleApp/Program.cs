@@ -1,5 +1,4 @@
 using System;
-using System.Web;
 
 namespace TestConsoleApp
 {
@@ -9,7 +8,7 @@ namespace TestConsoleApp
         {
             try
             {
-                IRunner runner = new FileResources.Runner();
+                IRunner runner = new Async.MultipleTasksRunner();
                 runner.RunProgram();
             }
             catch (Exception ex)

@@ -9,18 +9,18 @@ namespace TestConsoleApp.Async
         public async void RunProgram()
         {
             Console.WriteLine("starting");
-            var length = await GetRequestLength("http://www.google.com");
+            var length = await GetResponseLength("http://www.google.com");
             Console.WriteLine("length = " + length);
-            Console.WriteLine("after async call");
+            Console.WriteLine("after first async call");
         }
 
-        private async Task<int> GetRequestLength(string url)
+        private async Task<int> GetResponseLength(string url)
         {
             try
             {
-                HttpClient client = new HttpClient();
-                Task<string> getStringTask = client.GetStringAsync(url);
-                string urlContents = await getStringTask;
+                var client = new HttpClient();
+                string urlContents = await client.GetStringAsync(url);
+                Console.WriteLine("awaiting content retrieval");
 
                 return urlContents.Length;
             }

@@ -26,11 +26,11 @@ namespace TestConsoleApp.RsaEncryption
 
         public void RunProgram()
         {
-            string secret = "1647e272-091d-41b7-b14a-9f2493fadc82";
+            string secret = "d206a780-a567-41fb-bed1-1ab037b3c6fe";
             string encrypted = Encrypt(secret);
             Console.WriteLine(encrypted);
 
-            string decrypted = Decrypt("ojywk66CECyRT/ELkGeVv2X4cZi17rUg0mIu3blYUmHDinDS5NH2vHq+t6Ses25DRjNfLBSQ1BzjNCnkGAmRE7jNBEBSBhqDfHrCmbqpuUhBfJDh4KuyCJWKLLeLOLG3DxJ9tl8Qv0C06DdRKWMAypACZo+pF25xN8khkptQess=");
+            string decrypted = Decrypt(encrypted);
             Console.WriteLine(decrypted);
 
             //Debug.Assert(decrypted == secret);

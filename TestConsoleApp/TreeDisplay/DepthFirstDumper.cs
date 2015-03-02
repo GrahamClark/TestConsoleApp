@@ -3,7 +3,7 @@ using System.Text;
 
 namespace TestConsoleApp.TreeDisplay
 {
-    sealed class Dumper
+    sealed class DepthFirstDumper
     {
         public static string Dump(Node root)
         {
